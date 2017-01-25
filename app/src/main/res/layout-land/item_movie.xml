@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/lvMovieImage"
+        tools:src="@mipmap/ic_launcher"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:paddingTop="2dp"
+        android:paddingBottom="2dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvOverview"
+        tools:text="sjadfsljdfas;jkvnksdjh;fh;jvn;jvb;dsfhbdfkjvnd;fghe;inkjbbkvbdfkjkbjk"
+        android:layout_below="@+id/tvTitleDetails"
+        android:layout_alignLeft="@+id/tvTitleDetails"
+        android:layout_alignStart="@+id/tvTitleDetails"
+        android:paddingLeft="16dp"
+        android:paddingBottom="2dp"/>
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvTitleDetails"
+        tools:text="sdlkjfsalkdjfslk"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@id/lvMovieImage"
+        android:paddingLeft="16dp"/>
+
+</RelativeLayout>
