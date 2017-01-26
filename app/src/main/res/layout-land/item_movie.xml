@@ -12,8 +12,8 @@
         tools:src="@mipmap/ic_launcher"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:paddingTop="2dp"
-        android:paddingBottom="2dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
         />
 
     <TextView
@@ -25,7 +25,7 @@
         android:layout_alignLeft="@+id/tvTitleDetails"
         android:layout_alignStart="@+id/tvTitleDetails"
         android:paddingLeft="16dp"
-        android:paddingBottom="2dp"/>
+        android:paddingBottom="10dp"/>
 
     <TextView
         android:text="TextView"
@@ -35,6 +35,9 @@
         tools:text="sdlkjfsalkdjfslk"
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@id/lvMovieImage"
-        android:paddingLeft="16dp"/>
+        android:paddingLeft="16dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:textStyle="bold"/>
 
 </RelativeLayout>
