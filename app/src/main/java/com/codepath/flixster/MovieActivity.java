@@ -1,6 +1,7 @@
 package com.codepath.flixster;
 
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -38,15 +39,12 @@ public class MovieActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie);
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(R.layout.abs_layout);
 //        getSupportActionBar().hide();
-        refreshList(0);
+        refreshList();
         swipeContainer = (SwipeRefreshLayout) findViewById(R.id.swipeContainer);
-        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                refreshList(0);
-            }
-        });
+        swipeContainer.setOnRefreshListener(this::refreshList);
 
         swipeContainer.setColorSchemeResources(android.R.color.holo_blue_bright,
                 android.R.color.holo_green_light,
@@ -54,7 +52,7 @@ public class MovieActivity extends AppCompatActivity {
                 android.R.color.holo_red_light);
     }
 
-    public void refreshList(int page) {
+    public void refreshList() {
         OkHttpClient client = new OkHttpClient();
         HttpUrl.Builder urlBuilder = HttpUrl.parse(API_URL).newBuilder();
         String url = urlBuilder.addQueryParameter(API_KEY, API_KEY_VALUE).build().toString();
@@ -77,15 +75,12 @@ public class MovieActivity extends AppCompatActivity {
                     JSONObject obj = new JSONObject(response.body().string());
                     final JSONArray movieJsonResults = obj.getJSONArray("results");
 
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
+                    runOnUiThread(() -> {
                             movieAdapter.clear();
                             movies.addAll(Movie.fromJsonArray(movieJsonResults));
                             movieAdapter.notifyDataSetChanged();
                             swipeContainer.setRefreshing(false);
                             Log.d("DEBUG", movieJsonResults.toString());
-                        }
                     });
                 } catch (JSONException e) {
                     e.printStackTrace();
